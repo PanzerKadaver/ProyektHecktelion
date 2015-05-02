@@ -10,8 +10,6 @@
 		</script> <!-- AngularJS v1.3.15 -->
 		<script type="text/javascript" src="library/angular/ui-router.min.js">
 		</script> <!-- ui-router (Angular Plug-in) v0.2.14 -->
-		<script type="text/javascript" src="library/angular/statehelper.min.js">
-		</script> <!-- StateHelper (ui-router Plug-in) v1.3.0 -->
 
 		<!-- NEDB -->
 		<script type="text/javascript" src="library/nedb/nedb.min.js">
@@ -27,15 +25,18 @@
 		<!-- SCRIPTS -->
 		<script type="text/javascript" src="scripts/hecktelionApp.js">
 		</script> <!-- Main Script -->
+		<script type="text/javascript" src="scripts/route.js"></script>
 
 		<!-- CONTROLLERS -->
 		<script type="text/javascript" src="controllers/RootCtrl.js">
 		</script> <!-- Root Controller -->
+		<script type="text/javascript" src="controllers/LoadingCtrl.js">
+		</script> <!-- Preload all app content -->
 
 		<!-- SERVICES -->
 	</head>
 
 	<body ng-controller="RootCtrl">
-		Hello world ! {{version}}
+		<div ui-view></div>
 	</body>
 </html>
