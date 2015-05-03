@@ -1,0 +1,7 @@
+loadImages({
+	"manifest" : [
+		{"id" : "one", "src" : "1.png"},
+		{"id" : "title", "src" : "game_title.png"}
+	],
+	"path" : "data/images/"
+})

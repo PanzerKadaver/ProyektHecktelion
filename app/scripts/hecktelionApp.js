@@ -1,3 +1,3 @@
-var hecktelionApp = angular.module('hecktelionApp', ['ui.router', 'hecktelionControllers']);
+hecktelionApp = angular.module('hecktelionApp', ['ui.router', 'hecktelionControllers']);
 
-var hecktelionControllers = angular.module('hecktelionControllers', []);
+hecktelionControllers = angular.module('hecktelionControllers', []);

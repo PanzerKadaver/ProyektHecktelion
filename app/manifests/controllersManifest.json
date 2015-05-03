@@ -1,0 +1,6 @@
+loadControllers({
+	"manifest" : [
+		{"id" : "MainCtrl", "src" : "MainCtrl.js"}
+	],
+	"path" : "controllers/"
+})

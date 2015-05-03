@@ -78,3 +78,5 @@ credits.html
 *.dll
 *.exe
 *.dat
+app/library/angular/angular.js
+app/data/images/*
