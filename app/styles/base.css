@@ -1,0 +1,19 @@
+html {
+	-webkit-user-select: none;
+	cursor: default;
+	color: white;
+}
+
+html, body, #AppContainer, #LoadingScreen {
+	height: 100%;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+button {
+	cursor: pointer;
+}

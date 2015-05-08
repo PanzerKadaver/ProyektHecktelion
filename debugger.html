@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<script type="text/javascript">
+			var gui = require('nw.gui');
+			var main_win = gui.Window.get();
+			var devtools_win;
+			var landingPage = "app/hecktelion.html";
+
+			main_win.showDevTools('', true);
+			main_win.on('devtools-opened', function (url) {
+				main_win.closeDevTools();
+				devtools_win = gui.Window.open(url, {
+					position: 'center',
+					width: 1000,
+					height: 500,
+					toolbar: false,
+					resizable: false
+				});
+				main_win.devtools_win = devtools_win;
+				devtools_win.on('fullyLoaded', function () {
+					console.log("Debugger successfully opened :)");
+					console.log(main_win.window.open(landingPage, "_self"));
+				})
+				devtools_win.on('waitDom', function () {
+					if (document.readyState == "complete")
+						return devtools_win.emit('fullyLoaded');
+					devtools_win.window.document.addEventListener('DOMContentLoaded', function () {
+						devtools_win.emit('fullyLoaded');
+					});
+				});
+				devtools_win.on('loaded', function () {
+					devtools_win.emit('waitDom');
+				});
+				devtools_win.on('close', function () {
+				alert("You can't close devtools in debug mode");
+				});
+			});
+			main_win.on('close', function () {
+				main_win.close(true);
+				devtools_win.close(true);
+			});
+		</script>
+	</body>
+</html>

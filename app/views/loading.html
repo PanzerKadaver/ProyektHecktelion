@@ -1,4 +1,26 @@
-<div id="LoadingScreen">
-	LOADING {{state}}
-	<button ui-sref="main">MAIN</button>
+<div id="LoadingScreen" class="bright-blue">
+	<div id="loadingBackground">
+		<img src="{{loading.background}}">
+	</div>
+	<div id="loadingTitle">
+		LOADING <span id="loadingState" ng-class="{'bright-green': loading.complete, 'bright-orange': loading.pending}">{{loading.state}}</span>
+	</div>
+	<div id="loadingManifests">
+		Get game manifests <span id="manifestsState" ng-class="{'bright-green': loading.manifests.complete, 'bright-orange': loading.manifests.pending}">{{loading.manifests.state}}</span> [{{loading.manifests.current}}/{{loading.manifests.total}}]
+	</div>
+	<div id="loadingFiles">
+		Load game files <span id="filesState" ng-class="{'bright-green': loading.files.complete, 'bright-orange': loading.files.pending}">{{loading.files.state}}</span> [{{loading.files.current}}/{{loading.files.total}}]
+	</div>
+	<div id="manifestsContainer">
+		<div class="manifestLoad" ng-repeat="manifest in loading.manifests.loaded track by $index">
+			<span class="manifestName">Load {{manifest.name}} files</span><span class="singleManifestState" ng-class="{'bright-green': manifest.complete, 'bright-orange': manifest.pending}">{{manifest.state}}</span> [{{manifest.current}}/{{manifest.total}}]
+			<ul class="fileLoad">
+				<li ng-repeat="file in manifest.files track by $index"><span class="fileName">— {{file.name}}</span><span class="bright-green">loaded</span></li>
+			</ul>
+		</div>
+	</div>
+	<div id="font-preloader" style="opacity: 0">
+		<span style="font-family: 'electrolize'">Electrolize</span>
+		<span style="font-family: 'orbitron'">Orbitron</span>
+	</div>
 </div>

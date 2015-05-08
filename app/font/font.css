@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'orbitron';
+    src: url('orbitron-light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'electrolize';
+    src: url('Electrolize-Regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bright-blue {
+	color: #01B0F0;
+	text-shadow: 0 0 20px rgba(4, 99, 128, 0.86);
+}
+
+.bright-orange {
+	color: #e08400;
+	text-shadow: 0 0 20px rgba(201, 77, 0, 0.86);
+}
+
+.bright-green {
+	color: #AEEE00;
+	text-shadow: 0 0 20px rgba(150, 202, 45, 0.86);
+}

@@ -1,58 +1,138 @@
-hecktelionControllers.controller('LoadingCtrl', ['$rootScope', '$scope', '$q', '$timeout', function ($rootScope, $scope, $q, $timeout) {
-	$scope.state = "In Progress ";
-	$scope.delay = 0;
-
-	$scope.loadAssets = function (assets, fromManifest) {
-		var loadPromise = $scope.asyncLoad($rootScope.AssetsLoader, assets);
-
-		loadPromise.then(function (e) { // Load Complete
-			if (fromManifest) {
-				console.log("Manifests Complete");
-				$scope.delay -= 100;
-			}
-			else {
-				console.log("Complete");
-			}
-		}, function (e) { // Load Error
-			console.log("Error :", e);
-		}, function (e) { // File Loaded or Load Start
-			console.log("File Loaded : ", e)
-			if (!fromManifest) {
-				$scope.state += "M";
-				$timeout(function () {$scope.loadAssets(e.result, true)}, $scope.delay);
-				$scope.delay += 100;
-			}
-			else
-				$scope.state += "F";
-		});
+hecktelionControllers.controller('LoadingCtrl', ['$scope', 'AssetsLoader', function ($scope, AssetsLoader) {
+	$scope.loading = {
+		state: "in progress...",
+		complete: false,
+		pending: true,
+		background: "",
+		manifests: {
+			state: "pending...",
+			complete: false,
+			pending: true,
+			loaded: [],
+			current: 0,
+			total: 0
+		},
+		files: {
+			state: "pending...",
+			total: 0,
+			current: 0,
+			complete: false,
+			pending: true
+		}
 	};
 
-	$scope.asyncLoad = function (loader, assets) {
-		var defered = $q.defer();
+	$scope.getLoadingBackground = function () {
+		var asset = AssetsLoader.getAssetById("loadingBackground");
 
-		(function (d, l, a) {
-			l.on("complete", function (e) {
-				d.resolve(e);
-			});
-			l.on("error", function (e) {
-				d.reject(e);
-			});
-			l.on("fileload", function (e) {
-				d.notify({"item" : e.item, "result" : e.result});
-			});
-
-			l.loadManifest(a);
-
-		})(defered, loader, assets);
-
-		return (defered.promise);
+		if (asset)
+			$scope.loading.background = asset.data.attributes.getNamedItem("src").nodeValue;
 	}
 
-	$scope.loadAssets({
-		"manifest" : [
-			{src: "controllersManifest.json", callback: "loadControllers", type: createjs.AbstractLoader.JSONP},
-			{src: "imagesManifest.json", callback: "loadImages", type: createjs.AbstractLoader.JSONP}
+	$scope.readManifests = function (manifests) {
+		var promise = AssetsLoader.readManifests(manifests);
+
+		$scope.loading.manifests.state = "in progress...";
+
+		promise.then(function (resolve) {
+			//console.log('resolve', resolve);
+
+			$scope.loading.manifests.complete = true;
+			$scope.loading.manifests.pending = false;
+			$scope.loading.manifests.state = "complete !"
+
+			$scope.loadManifest(AssetsLoader.nextManifest());
+		}, function (reject) {
+			console.log('reject', reject);
+		}, function (notify) {
+			switch (notify.type) {
+				case 'loadstart':
+					console.log('loadstart');
+					break;
+				case 'progress':
+					//console.log('progress');
+					break;
+				case 'fileload':
+					//console.log('fileload', notify);
+
+					$scope.loading.files.total += notify.result.manifest.length;
+					$scope.loading.manifests.total += 1;
+
+					AssetsLoader.pushManifest(notify.result);
+					break;
+			};
+		});
+
+		AssetsLoader.load();
+	};
+
+	$scope.loadManifest = function (manifest) {
+		var promise = AssetsLoader.loadManifest(manifest);
+		var nextManifest = AssetsLoader.nextManifest();
+		var currentManifest = {};
+
+		$scope.loading.manifests.loaded.push({
+			name: manifest.name,
+			state: "in progress...",
+			current: 0,
+			complete: false,
+			pending: true,
+			total: manifest.manifest.length,
+			files: []
+		});
+		currentManifest = $scope.loading.manifests.loaded[$scope.loading.manifests.current];
+
+		promise.then(function (resolve) {
+			//console.log('resolve', resolve);
+			currentManifest.complete = true;
+			currentManifest.pending = false;
+			currentManifest.state = "complete !";
+			$scope.loading.manifests.current += 1;
+
+			if (nextManifest)
+				$scope.loadManifest(nextManifest);
+			else
+			{
+				$scope.loading.complete = true;
+				$scope.loading.pending = false;
+				$scope.loading.files.complete = true;
+				$scope.loading.pending = false;
+				$scope.loading.files.state = "complete !"
+				$scope.loading.state = "complete !"
+			}
+		}, function (reject) {
+			console.log('reject', reject);
+		}, function (notify) {
+			switch (notify.type) {
+				case 'loadstart':
+					console.log('loadstart');
+				case 'progress':
+					//console.log('progress');
+					break;
+				case 'fileload':
+					//console.log('fileload', notify);
+
+					currentManifest.files.push({name: notify.item.src.substr(notify.item.path.length, notify.item.src.length)});
+					$scope.loading.files.current += 1;
+					currentManifest.current += 1;
+
+					AssetsLoader.pushAsset({type: notify.item.type, id: notify.item.id, data: notify.result});
+
+					if (notify.item.type == "image" && $scope.loading.background == "")
+						$scope.getLoadingBackground();
+					break;
+			};
+		});
+
+		AssetsLoader.load();
+	}
+
+	$scope.readManifests({
+		manifest : [
+			{src: "fontsManifest.json", callback: "loadFonts", type: createjs.AbstractLoader.JSONP},
+			{src: "stylesManifest.json", callback: "loadStyles", type: createjs.AbstractLoader.JSONP},
+			{src: "imagesManifest.json", callback: "loadImages", type: createjs.AbstractLoader.JSONP},
+			{src: "controllersManifest.json", callback: "loadControllers", type: createjs.AbstractLoader.JSONP}
 		],
-		"path" : "manifests/"
-	}, false);
+		path: "manifests/"
+	});
 }]);

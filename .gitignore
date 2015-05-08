@@ -73,10 +73,16 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Personal
 credits.html
-*.pak
-*.dll
-*.exe
-*.dat
-app/library/angular/angular.js
-app/data/images/*
+d3dcompiler_47.dll
+ffmpegsumo.dll
+icudtl.dat
+libEGL.dll
+locales/*
+libGLESv2.dll
+nw.exe
+nw.pak
+nwjc.exe
+pdf.dll
