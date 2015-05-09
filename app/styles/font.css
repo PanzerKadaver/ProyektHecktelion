@@ -26,3 +26,8 @@
 	color: #AEEE00;
 	text-shadow: 0 0 20px rgba(150, 202, 45, 0.86);
 }
+
+.bright-red {
+    color: #C9001A;
+    text-shadow: 0 0 20px rgba(185, 18, 27, 0.86);
+}

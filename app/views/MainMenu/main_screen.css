@@ -1,0 +1,28 @@
+#MainMenuScreen {
+	padding-top: 20px;
+}
+
+#mainmenuBackground {
+	position: fixed;
+	top: 0px;
+	left: -150px;
+	z-index: -1;
+}
+
+#mainmenuTitle {
+	width: 960px;
+	height: 138px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#version {
+	font-size: 22px;
+	position: fixed;
+	bottom: 0px;
+	margin-bottom: 20px;
+	margin-right: 40px;
+	right: 0px;
+	font-family: 'electrolize';
+	font-weight: bold;
+}

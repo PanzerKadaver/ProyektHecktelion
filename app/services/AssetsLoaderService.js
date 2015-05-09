@@ -34,6 +34,14 @@ hecktelionServices.service('AssetsLoader', ['$q', function ($q) {
 		return undefined;
 	}
 
+	this.getImageById = function (id) {
+		var _img = this.getAssetById(id);
+
+		if (_img)
+			return _img.data.attributes.getNamedItem("src").nodeValue
+		return "";
+	}
+
 	this.load = function () {
 		loader.load();
 	}
