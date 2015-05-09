@@ -1,0 +1,8 @@
+loadBaseStyle({
+	"name" : "Base Styles",
+	"manifest" : [
+		{"id": "Style_Base",			"src": "base.css"},
+		{"id": "Style_Font",			"src": "font.css"}
+	],
+	"path" : "styles/"
+})

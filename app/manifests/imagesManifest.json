@@ -1,9 +1,0 @@
-loadImages({
-	"name" : "Images Manifest",
-	"manifest" : [
-		{"id": "loadingBackground",	"src": "loading_screen_background.jpg"},
-		{"id": "title",				"src": "game_title.png"},
-		{"id": "one",				"src": "1.png"}
-	],
-	"path" : "data/images/"
-})

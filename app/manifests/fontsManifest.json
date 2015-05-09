@@ -1,7 +1,0 @@
-loadFonts({
-	"name" : "Fonts Manifest",
-	"manifest" : [
-		{"id": "Style_Font",			"src": "font.css"}
-	],
-	"path" : "font/"
-})

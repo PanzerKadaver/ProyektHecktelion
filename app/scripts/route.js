@@ -4,12 +4,12 @@ hecktelionApp.config(function ($stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state('loading', {
 			url: "/loading",
-			templateUrl: "views/loading.html",
+			templateUrl: "views/Loading/loading.html",
 			controller: "LoadingCtrl"
 		})
 		.state('main', {
 			url: "/main",
-			templateUrl: "views/main.html",
+			templateUrl: "views/MainMenu/main.html",
 			controller: "MainCtrl"
 		});
 });

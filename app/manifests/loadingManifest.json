@@ -1,0 +1,8 @@
+loadLoading({
+	"name" : "Loading Screen",
+	"manifest" : [
+		{"id": "Style_LoadingScreen",	"src": "loadingScreen.css"},
+		{"id": "loadingBackground",		"src": "loading_screen_background.jpg"},
+	],
+	"path" : "views/Loading/"
+})

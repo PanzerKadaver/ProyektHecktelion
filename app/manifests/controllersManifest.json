@@ -1,5 +1,5 @@
 loadControllers({
-	"name" : "Controllers Manifest",
+	"name" : "Controllers",
 	"manifest" : [
 		{"id" : "MainCtrl", "src" : "MainCtrl.js"}
 	],

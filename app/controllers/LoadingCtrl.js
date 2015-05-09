@@ -128,9 +128,9 @@ hecktelionControllers.controller('LoadingCtrl', ['$scope', 'AssetsLoader', funct
 
 	$scope.readManifests({
 		manifest : [
-			{src: "fontsManifest.json", callback: "loadFonts", type: createjs.AbstractLoader.JSONP},
-			{src: "stylesManifest.json", callback: "loadStyles", type: createjs.AbstractLoader.JSONP},
-			{src: "imagesManifest.json", callback: "loadImages", type: createjs.AbstractLoader.JSONP},
+			{src: "baseStyleManifest.json", callback: "loadBaseStyle", type: createjs.AbstractLoader.JSONP},
+			{src: "loadingManifest.json", callback: "loadLoading", type: createjs.AbstractLoader.JSONP},
+			{src: "mainMenuManifest.json", callback: "loadMainMenu", type: createjs.AbstractLoader.JSONP},
 			{src: "controllersManifest.json", callback: "loadControllers", type: createjs.AbstractLoader.JSONP}
 		],
 		path: "manifests/"

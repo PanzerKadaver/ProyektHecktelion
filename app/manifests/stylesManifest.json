@@ -1,8 +1,0 @@
-loadStyles({
-	"name" : "Styles Manifest",
-	"manifest" : [
-		{"id": "Style_Base",			"src": "base.css"			},
-		{"id": "Style_LoadingScreen",	"src": "loadingScreen.css"	}
-	],
-	"path" : "styles/"
-})
