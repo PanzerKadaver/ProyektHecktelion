@@ -1,8 +1,8 @@
 {
 	"name" : "Hecktelion : The Legacy",
 	"description" : "Aux commandes d'un vaisseau millénaire, parcourez les étendus vierges de la Bordure",
-	"version" : "0.0.5",
-	"main" : "debugger.html",
+	"version" : "0.0.6",
+	"main" : "app/hecktelion.html",
 	"window" : {
 		"title" : "Hecktelion : The Legacy",
 		"toolbar" : false,

@@ -1,0 +1,7 @@
+loadAnimate({
+	"name" : "Animations",
+	"manifest" : [
+		{"id": "Anim_Fade",		"src": "fade-animate.css"}
+	],
+	"path" : "styles/animate/"
+})

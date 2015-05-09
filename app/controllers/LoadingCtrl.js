@@ -1,4 +1,4 @@
-hecktelionControllers.controller('LoadingCtrl', ['$scope', 'AssetsLoader', function ($scope, AssetsLoader) {
+hecktelionControllers.controller('LoadingCtrl', ['$rootScope', '$scope', '$state', '$timeout', 'AssetsLoader', function ($rootScope, $scope, $state, $timeout, AssetsLoader) {
 	$scope.loading = {
 		state: "in progress...",
 		complete: false,
@@ -20,6 +20,11 @@ hecktelionControllers.controller('LoadingCtrl', ['$scope', 'AssetsLoader', funct
 			pending: true
 		}
 	};
+
+	$scope.nextScreen = function () {
+		$rootScope.nextScreen = "main";
+		$state.go("transition");
+	}
 
 	$scope.getLoadingBackground = function () {
 		var asset = AssetsLoader.getAssetById("loadingBackground");
@@ -98,6 +103,9 @@ hecktelionControllers.controller('LoadingCtrl', ['$scope', 'AssetsLoader', funct
 				$scope.loading.pending = false;
 				$scope.loading.files.state = "complete !"
 				$scope.loading.state = "complete !"
+				$timeout(function (_scope) {
+					_scope.nextScreen();
+				}, 1000, true, $scope);
 			}
 		}, function (reject) {
 			console.log('reject', reject);
@@ -130,6 +138,7 @@ hecktelionControllers.controller('LoadingCtrl', ['$scope', 'AssetsLoader', funct
 		manifest : [
 			{src: "baseStyleManifest.json", callback: "loadBaseStyle", type: createjs.AbstractLoader.JSONP},
 			{src: "loadingManifest.json", callback: "loadLoading", type: createjs.AbstractLoader.JSONP},
+			{src: "animateManifest.json", callback: "loadAnimate", type: createjs.AbstractLoader.JSONP},
 			{src: "mainMenuManifest.json", callback: "loadMainMenu", type: createjs.AbstractLoader.JSONP},
 			{src: "controllersManifest.json", callback: "loadControllers", type: createjs.AbstractLoader.JSONP}
 		],

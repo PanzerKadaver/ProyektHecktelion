@@ -1,0 +1,30 @@
+.fade {
+	position: fixed;
+	z-index: 10;
+	width: 250px;
+	height: 250px;
+	background-color: red;
+	bottom: 0px;
+	right: 0px;
+	opacity: 0;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+	transition: all 1.5s ease-in-out;
+}
+
+[ui-view].ng-leave {
+	opacity: 1;
+}
+
+[ui-view].ng-leave-active {
+	opacity: 0;
+}
+
+[ui-view].ng-enter {
+	opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+	opacity: 1;
+}

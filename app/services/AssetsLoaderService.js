@@ -6,7 +6,7 @@ hecktelionServices.service('AssetsLoader', ['$q', function ($q) {
 	this.init = function () {
 		loader.setMaxConnections(1);
 		loader.maintainScriptOrder = true;
-		loader.setFileDelay(250);
+		loader.setFileDelay(200);
 		manifestsToLoad.length = 0;
 	};
 
