@@ -8,8 +8,7 @@ hecktelionControllers.controller('MainCtrl', ['$rootScope', '$scope', 'AssetsLoa
 
 	$scope.functions = {
 		quit: function () {
-			var win = $rootScope.gui.Window.get();
-			win.close();
+			$rootScope.win.close();
 		}
 	};
 

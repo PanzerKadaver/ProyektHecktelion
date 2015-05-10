@@ -2,10 +2,15 @@ html {
 	-webkit-user-select: none;
 	cursor: default;
 	color: white;
+	width: 1600px;
+	height: 900px;
+}
+
+body {
+	height: 100%;
 }
 
 html, body {
-	height: 100%;
 	margin: 0px;
 	box-sizing: border-box;
 	background-color: black;
