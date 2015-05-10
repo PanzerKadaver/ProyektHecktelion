@@ -3,7 +3,8 @@ loadMainMenu({
 	"manifest" : [
 		{"id": "title",			"src": "title.png"},
 		{"id": "background_1",	"src": "background_1.png"},
-		{"id": "Style_mainScreen", "src": "main_screen.css"}
+		{"id": "Style_mainScreen", "src": "main_screen.css"},
+		{"id": "Style_mainButton", "src": "main_button.css"}
 	],
 	"path" : "views/MainMenu/"
 })

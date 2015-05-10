@@ -1,15 +1,18 @@
 <div id="MainMenuScreen" class="screen">
-	<div id="mainmenuBackground">
+	<div id="MainMenuBackground">
 		<img src="{{assets.background}}">
 	</div>
-	<div id ="mainmenuTitle">
+	<div id ="MainMenuTitle">
 		<img src="{{assets.title}}">
 	</div>
-	<div id="mainmenu">
-		<div class="mainbutton">
+	<div id="MainMenuContainer">
+		<div class="main-button" ng-repeat="btn in menu track by $index">
+			<div class="button-edge"></div>
+			<div class="button-background"></div>
+			<div class="button-text" ng-click="btn.fct()"><span>{{btn.text}}</span></div>
 		</div>
 	</div>
-	<div id="version" class="bright-red">
+	<div id="version" class="bright-green">
 		{{version}}
 	</div>
 </div>

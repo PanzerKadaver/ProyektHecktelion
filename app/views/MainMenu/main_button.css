@@ -1,0 +1,72 @@
+.main-button {
+	width: 310px;
+	height: 75px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 0px 30px 0px 30px;
+	margin-bottom: 75px;
+	cursor: pointer;
+}
+
+.button-edge {
+	height: 0px;
+	width: 250px;
+}
+
+.button-edge::before {
+	content: '';
+	position: relative;
+	border-right: 30px solid #336699;
+	border-bottom: 30px solid transparent;
+	bottom: -28px;
+	left: -30px;
+}
+
+.button-edge::after {
+	content: '';
+	position: relative;
+	border-top: 30px solid transparent;
+	border-left: 30px solid #336699;
+	top: 30px;
+	right: -220px;
+}
+
+.button-background {
+	width: 250px;
+	height: 75px;
+	background-color: #336699;
+}
+
+.button-background::before {
+	content: '';
+	border-top: 15px solid #336699;
+	border-left: 30px solid #336699;
+	position: relative;
+	top: 15px;
+	left: -30px;
+}
+
+.button-background::after {
+	content: '';
+	border-bottom: 15px solid #336699;
+	border-right: 30px solid #336699;
+	position: relative;
+	right: -220px;
+	bottom: -43px;
+}
+
+.button-text {
+	font-family: 'electrolize';
+	position: relative;
+	font-size: 24px;
+	top: -75px;
+	width: 250px;
+	height: 75px;
+	text-align: center;
+	display: table;
+}
+
+.button-text span {
+	vertical-align: middle;
+	display: table-cell;
+}
