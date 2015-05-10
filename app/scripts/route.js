@@ -20,5 +20,14 @@ hecktelionApp.config(function ($stateProvider, $urlRouterProvider) {
 					_state.go(_screen);
 				}, 1500, true, $state, $rootScope.nextScreen);
 			}
+		})
+		.state('quit', {
+			url: "/quit",
+			templateUrl: "views/transition.html",
+			controller: function ($rootScope, $timeout) {
+				$timeout(function (_root) {
+					_root.win.close();
+				}, 100, true, $rootScope);
+			}
 		});
 });

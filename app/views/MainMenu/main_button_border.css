@@ -1,0 +1,55 @@
+.button-edge-border {
+	height: 0px;
+	width: 330px;
+	position: absolute;
+	top: 7px;
+	left: 40px;
+	z-index: 8;
+}
+
+.button-edge-border::before {
+	content: '';
+	position: relative;
+	border-right: 40px solid #CCCCCC;
+	border-bottom: 40px solid transparent;
+	bottom: -33px;
+	left: -40px;
+}
+
+.button-edge-border::after {
+	content: '';
+	position: relative;
+	border-top: 40px solid transparent;
+	border-left: 40px solid #CCCCCC;
+	top: 25px;
+	right: -210px;
+}
+
+.button-background-border {
+	width: 250px;
+	height: 89px;
+	background-color: #CCCCCC;
+	position: absolute;
+	top: 0px;
+	left: 40px;
+	z-index: 7;
+	box-shadow: none;
+}
+
+.button-background-border::before {
+	content: '';
+	border-top: 21px solid #CCCCCC;
+	border-left: 40px solid #CCCCCC;
+	position: relative;
+	top: 10px;
+	left: -40px;
+}
+
+.button-background-border::after {
+	content: '';
+	border-bottom: 21px solid #CCCCCC;
+	border-right: 40px solid #CCCCCC;
+	position: relative;
+	right: -210px;
+	bottom: -62px;
+}

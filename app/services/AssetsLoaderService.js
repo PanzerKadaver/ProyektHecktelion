@@ -3,10 +3,10 @@ hecktelionServices.service('AssetsLoader', ['$q', function ($q) {
 	var manifestsToLoad = [];
 	var assetsLoaded = [];
 
-	this.init = function () {
+	this.init = function (delay) {
 		loader.setMaxConnections(1);
 		loader.maintainScriptOrder = true;
-		loader.setFileDelay(250);
+		loader.setFileDelay(delay);
 		manifestsToLoad.length = 0;
 	};
 

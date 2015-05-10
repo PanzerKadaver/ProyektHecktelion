@@ -1,7 +1,8 @@
 loadAnimate({
 	"name" : "Animations",
 	"manifest" : [
-		{"id": "Anim_Fade",		"src": "fade-animate.css"}
+		{"id": "Anim_Fade",		"src": "fade-animate.css"},
+		{"id": "Anim_MainBorder",		"src": "main-border-color.css"}
 	],
 	"path" : "styles/animate/"
 })

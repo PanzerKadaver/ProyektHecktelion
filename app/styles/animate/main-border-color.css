@@ -1,0 +1,33 @@
+.button-edge-border::before,
+.button-edge-border::after,
+.button-background-border,
+.button-background-border::before,
+.button-background-border::after {
+	transition: all 0.3s ease-in-out;
+}
+
+.hover .button-edge-border::before,
+.hover .button-edge-border::after,
+.hover .button-background-border,
+.hover .button-background-border::before,
+.hover .button-background-border::after {
+	transition: all 0.3s ease-in-out;
+}
+
+.hover .button-edge-border::before {
+	border-right-color: #01B0F0;
+}
+
+.hover .button-edge-border::after {
+	border-left-color: #01B0F0;
+}
+
+.hover .button-background-border {
+	background-color: #01B0F0;
+	box-shadow: 0px 0px 50px 10px rgba(4, 99, 128, 0.86);
+}
+
+.hover .button-background-border::before,
+.hover .button-background-border::after {
+	border-color: #01B0F0;
+}

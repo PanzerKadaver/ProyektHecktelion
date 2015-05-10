@@ -1,4 +1,4 @@
-hecktelionControllers.controller('MainCtrl', ['$rootScope', '$scope', 'AssetsLoader', function ($rootScope, $scope, AssetsLoader) {
+hecktelionControllers.controller('MainCtrl', ['$rootScope', '$scope', '$state', 'AssetsLoader', function ($rootScope, $scope, $state, AssetsLoader) {
 	$scope.version = $rootScope.version;
 
 	$scope.assets = {
@@ -8,26 +8,31 @@ hecktelionControllers.controller('MainCtrl', ['$rootScope', '$scope', 'AssetsLoa
 
 	$scope.functions = {
 		quit: function () {
-			$rootScope.win.close();
+			$rootScope.nextScreen = "quit";
+			$state.go("transition");
 		}
 	};
 
 	$scope.menu = {
 		newGame: {
 			text: "Nouvelle Partie",
-			fct: undefined
+			fct: undefined,
+			hover: false
 		},
 		loadGame: {
 			text: "Charger Partie",
-			fct: undefined
+			fct: undefined,
+			hover: false
 		},
 		options: {
 			text: "Options",
 			fct: undefined,
+			hover: false
 		},
 		exit: {
 			text: "Quitter",
-			fct: $scope.functions.quit
+			fct: $scope.functions.quit,
+			hover: false
 		}
 	};
 }]);

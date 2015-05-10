@@ -1,5 +1,5 @@
 hecktelionControllers.controller('RootCtrl', ['$rootScope', '$scope', 'AssetsLoader', function ($rootScope, $scope, AssetsLoader) {
-	$rootScope.version = "v0.0.9";
+	$rootScope.version = "v0.0.10";
 	$rootScope.nextScreen = "";
 
 	$rootScope.gui = require('nw.gui');
@@ -15,5 +15,5 @@ hecktelionControllers.controller('RootCtrl', ['$rootScope', '$scope', 'AssetsLoa
 	}
 
 	$rootScope.fakeFullscreen();
-	AssetsLoader.init();
+	AssetsLoader.init(100);
 }]);

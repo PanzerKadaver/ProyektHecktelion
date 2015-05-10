@@ -6,10 +6,18 @@
 		<img src="{{assets.title}}">
 	</div>
 	<div id="MainMenuContainer">
-		<div class="main-button" ng-repeat="btn in menu track by $index">
+		<div	class="main-button"
+				ng-repeat="btn in menu track by $index"
+				ng-mouseover="btn.hover = true" 
+				ng-mouseleave="btn.hover = false" 
+				ng-class="{hover: btn.hover}" 
+				ng-click="btn.fct()">
+
+			<div class="button-edge-border"></div>
+			<div class="button-background-border"></div>
 			<div class="button-edge"></div>
 			<div class="button-background"></div>
-			<div class="button-text" ng-click="btn.fct()"><span>{{btn.text}}</span></div>
+			<div class="button-text"><span class="bright-blue">{{btn.text}}</span></div>
 		</div>
 	</div>
 	<div id="version" class="bright-green">
